@@ -193,7 +193,7 @@ def build_update_base(database_operation):
             cleanup_uploaded_files(temp_data_dir)
 
 def title_func():
-    st.title("TextGPT")
+    st.title("gprMax chatbot")
 
     # os.environ["OPENAI_API_KEY"] = st.session_state["openai_api_key"]
 
@@ -352,31 +352,20 @@ def query_func():
 
 def chat_func():
 
-    AI_AVATAR = "👾"
+    AI_AVATAR = "images/gprMax_FB_logo.png"
 
     # os.environ["OPENAI_API_KEY"] = st.session_state["openai_api_key"]
     # st.session_state["project"] = st.text_input("Project here")
     with st.sidebar:
 
-        st.session_state["model_type"] = st.selectbox("Model type", ["Base model", "Custom model"])
+        chat_model = st.selectbox("Select a model", ["gpt-4o-mini", "gpt-4o"])
 
-        if st.session_state["model_type"] == "Base model":
-            chat_model = st.selectbox("Select a model", ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo"])
-        else:
-            chat_model = st.text_input("Name of custom model (i.e. 'Output model')")
-
-
-        st.session_state["query_project"] = st.selectbox("Select project", st.session_state["available_projects"], key = "3")
-        if st.button("Rescan projects", type = "primary", key = "6"):
-            rescan_projects(st.session_state)
-            st.rerun()
+        st.session_state["query_project"] = "af6c69d5"
 
     for msg in history.messages:
         avatar = AI_AVATAR if msg.type == "ai" else None
         st.chat_message(msg.type, avatar=avatar).write(msg.content)
 
-    # with st.chat_message("assistant"):
-        # st.write("Ask away!")
     if len(history.messages) == 0:
         with st.chat_message("assistant", avatar=AI_AVATAR):
             st.write("Ask away!")
@@ -384,13 +373,8 @@ def chat_func():
 
     streamlit_prompt = st.chat_input("What would you like to know?")
 
-    # if st.button("Display"):
-    #     st.write("openai_api_key" in st.session_state)
-    #     st.write("project" in st.session_state)
-    #     st.write("query" in st.session_state)
 
     if streamlit_prompt:
-    # if st.button("Go!", key = "8"):
         if st.session_state["openai_api_key"] == "":
             st.error("Please enter an OpenAI API key")
             st.stop()
@@ -410,7 +394,6 @@ def chat_func():
         
 
         embedding_function = OpenAIEmbeddings()
-        # llm = ChatOpenAI(model = "gpt-4o-mini")
         llm = ChatOpenAI(model = chat_model)
 
 
@@ -429,12 +412,6 @@ def chat_func():
         os.makedirs(f"{root_dir}/answers", exist_ok=True)
 
         db, docstore = load_db(db_dir, embedding_function)
-
-        # try:
-        #     answer, sources = query_chatbot(streamlit_prompt, db, docstore, llm)
-        # except:
-        #     st.error("Unable to generate answer. Please check OpenAI API key, or try again later")
-        #     st.stop()
 
         answer, sources = query_chatbot(streamlit_prompt, db, docstore, llm)
 

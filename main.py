@@ -27,15 +27,5 @@ if "openai_api_key" not in st.session_state:
 
 
 os.environ["OPENAI_API_KEY"] = st.session_state["openai_api_key"]
-print("Openai api key applied")
 
-page_names_to_funcs = {
-    "-": intro_func,
-    "Build": build_func,
-    "Update": update_func,
-    "Evaluate": eval_func,
-    "Finetune": finetune_func,
-    "Chat": chat_func
-}
-page_name = st.sidebar.selectbox("Choose a function", page_names_to_funcs.keys())
-page_names_to_funcs[page_name]()
+chat_func()

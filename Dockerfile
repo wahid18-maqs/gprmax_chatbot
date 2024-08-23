@@ -1,6 +1,6 @@
 FROM python:3.12
 
-WORKDIR /gprmax_chatbot
+WORKDIR /textgpt-app
 
 COPY requirements_docker.txt .
 

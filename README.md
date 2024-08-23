@@ -11,7 +11,7 @@ This project aims to improve the user experience of gprMax, an open-source softw
 #### Contributor: Jung Whan Lee (eddieleejw)
 
 
- [For more details on the development of the chatbot, refer to my **TextGPT** repository developed alongside this chatbot, where you can:](https://github.com/eddieleejw/textgpt)
+### For more details on the development of the chatbot, refer to my [**TextGPT** repository](https://github.com/eddieleejw/textgpt) developed alongside this chatbot, where you can:
  - Create chatbots based on any custom set of documents
  - Evaluate a chatbot's performance to select the best chatbot for your needs
  - Finetune base chat models (e.g. to use as your LLM layer)
@@ -21,7 +21,38 @@ This project aims to improve the user experience of gprMax, an open-source softw
 
 ### LLM
 
+A LLM (or large language model) are AI models designed to understand and generate human language. These models are trained on large amounts of text, and recent advances in these models have led to powerful and accessible chatbots, such as [ChatGPT](https://chatgpt.com/), with which you can interact with and have a conversation. These chatbots can be used for many tasks including answering questions, telling stories, and even assisting with complex problem-solving.
+
+However, as powerful as these models are, they are not free from drawbacks, one of the most prominent drawbacks being "hallucination".
+
+### Hallucination
+
+"Hallucination" refers to to possibility for a LLM model to generate information that is incorrect, misleading, or even entirely fabricated. This occurs because LLMs generate responses based on patterns learned from vast amounts of training data, as opposed to truly processing the meaning of the text it was trained on. Hence, when asked a question, it is likely that the model responds with an answer that is statiscally likely, but may not be correct. 
+
+Hallucinations can be particularly rampant in those settings where the LLM is being asked about subjects which the LLM never (or rarely) encountered in its training data. Some examples of such settings are:
+
+1. When the LLM is being asked on subjects which did not exist at the time the LLM was trained
+    - For instance, a LLM trained in 2022 cannot know about events that occured in 2024 such as how many medals the US won in the 2024 olympics
+
+2. When the LLM is being asked about niche or specialised topics
+    - Highly specialisted subjects would not be well represented in the data, such as very specific historical events or specific open source software
+
+One approach to mitigate hallucination is RAG (or retrieval augmented generation).
+
 ### RAG
+
+In retrieval augmented generation, retrieval-based methods are combined with generative LLM models to provide more accurate responses on queries to which the LLM may have otherwise hallucinated.
+
+1. We start by hand-picking a collection of verified and accurate source documents from which we want the LLM response to be sourced.
+
+2. We then embed small chunks of these documents in a [vector database](https://www.pinecone.io/learn/vector-database/).
+
+3. At query-time, we use the vector database and retrieval-based methods such as a similarity search, to find document chunk(s) that are most relevant to the query.
+
+4. The LLM is supplied with the query and the context (as well as additional instructions such as to simply reply with "I don't know" if the given context can't answer the query) and generates a response.
+
+![RAG diagram]()
+
 
 
 # Installation

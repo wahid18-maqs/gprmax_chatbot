@@ -21,6 +21,8 @@ This project aims to improve the user experience of gprMax, an open-source softw
  - Finetune base chat models (e.g. to use as your LLM layer)
  - Query your chatbots
 
+![demo_gif](images/gprmax_demo.gif)
+
 # Contributions
 
 Throughout the course of the project, I developed a training pipeline that performs the following:

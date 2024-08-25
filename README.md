@@ -21,6 +21,24 @@ This project aims to improve the user experience of gprMax, an open-source softw
  - Finetune base chat models (e.g. to use as your LLM layer)
  - Query your chatbots
 
+# Contributions
+
+Throughout the course of the project, I developed a training pipeline that performs the following:
+
+- **Build** a new vector database
+- **Update** an existing vector database
+- **Query** the vector database using RAG + LLM
+- **Evaluate** the performance of the resulting chatbot (RAG + LLM) to compare different chatbots and pick the highest performing one
+- **Finetune** a base model, with the aim of using it as the LLM layer in the chatbot for greater control over the chatbout outputs
+
+I used this training pipeline to build the vector database consisting of various documents about gprMax, such as official documentation and source code, which is stored in a Chroma database in `dbs/af6c69d5/db`.
+
+I then used the [Streamlit](https://streamlit.io/) Python package to build a GUI to allow for user-friendly interaction with the pre-built database.
+
+Furthermore, I built a GUI for the entire training pipeline, which can be freely access [here](https://github.com/eddieleejw/textgpt).
+
+
+
 # How does it work?
 
 ### LLM

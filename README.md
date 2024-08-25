@@ -1,14 +1,18 @@
 # Google Summer of Code 2024
 
-
+![logos](images/logos.png)
 
 ### Project: [AI Chatbot and Assistant for Support](https://summerofcode.withgoogle.com/programs/2024/projects/DwjJyBl7)
 
-This project aims to improve the user experience of gprMax, an open-source software for simulating electromagnetic wave propagation by modelling Ground Penetrating Radar (GPR) and electromagnetic wave propagation, through the development of an AI chatbot and assistant. The purpose of the AI chatbot is to answer and troubleshoot any questions that the gprMax users may have, while the AI assistant is capable of turning natural language into an input file in the required gprMax format. We will leverage existing pretrained LLM models and the LangChain framework, and fine-tune the LLMs using LoRA and RAG techniques, drawing on the existing gprMax documentation and years worth of discussion in the Google groups and the GitHub issue tracker for data. The ultimate goal is to deliver and deploy an AI chatbot and assistant to enhance the accessibility of gprMax, as well as save both the users and the development team valuable time by automating the troubleshooting process.
+This project aims to improve the user experience of gprMax, an open-source software for simulating electromagnetic wave propagation by modelling Ground Penetrating Radar (GPR) and electromagnetic wave propagation, through the development of an AI chatbot and assistant. The purpose of the AI chatbot is to answer and troubleshoot any questions that the gprMax users may have, while the AI assistant is capable of turning natural language into an input file in the required gprMax format. We leverage pretrained LLM models from OpenAI, the LangChain framework, RAG, and fine-tuning techniques, drawing on the existing gprMax documentation and years worth of discussion in the Google groups and the GitHub issue tracker for data. The ultimate goal is to deliver and deploy an AI chatbot and assistant to enhance the accessibility of gprMax, as well as save both the users and the development team valuable time by automating the troubleshooting process.
+
+*Keywords: RAG, LangChain, LLM, Finetuning*
 
 #### Organisation: [gprMax](https://summerofcode.withgoogle.com/programs/2024/organizations/gprmax)
 
 #### Contributor: Jung Whan Lee (eddieleejw)
+
+#### Mentors: Iraklis Giannakis, Antonis Giannopoulos
 
 
 ### For more details on the development of the chatbot, refer to my [**TextGPT** repository](https://github.com/eddieleejw/textgpt) developed alongside this chatbot, where you can:
@@ -51,7 +55,9 @@ In retrieval augmented generation, retrieval-based methods are combined with gen
 
 4. The LLM is supplied with the query and the context (as well as additional instructions such as to simply reply with "I don't know" if the given context can't answer the query) and generates a response.
 
-![RAG diagram]()
+
+
+![RAG diagram](images/rag_flowchart.png)
 
 
 
@@ -116,3 +122,14 @@ The chatbot will ask you for your OpenAI API key on launch in order to access th
 ### Example 2
 ![chat_eg_2](images/chat_eg_2.png)
 
+
+# Final remarks
+
+### Future work
+
+- Input file generation
+- Ability for users to leave feedback, which could be used to improve the underlying RAG system
+
+### Acknowledgements
+
+I would like to acknowledge and thank the gprMax team for their advice and encouragement throughout the project, and my primary mentors for their support and guidance. 

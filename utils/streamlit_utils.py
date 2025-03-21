@@ -206,6 +206,7 @@ def eval_func():
     if st.button("Rescan projects", type="primary", key="7"):
         rescan_projects(st.session_state)
         st.rerun()
+         # st.session_state["eval_data_path"] = st.text_input("Specify path to directory holding evaluation data. The chatbot will be evaluated on its performance on these documents. It is recommended to evaluate on the documents the chatbot was trained on.")
 
     st.session_state["eval_uploaded_files"] = st.file_uploader("Upload files to evaluate database", accept_multiple_files=True)
     st.session_state["eval_number"] = st.text_input("How many evaluation data points to use. Higher yields more accurate results but will take longer and use more API requests. Leave blank to use all available data")
@@ -501,7 +502,7 @@ def streamlit_validate_ft_format(data_path):
 
 
 def main():
-    # User input
+    # User input generation
     query = st.text_area("Enter your query:")
 
     if st.button("Submit"):
